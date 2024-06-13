@@ -401,6 +401,7 @@ public class MyStringUtil {
 
         // Testing findLargestPalindrome method
         myStringUtil.setStr("madam racecar apple malayalam level kayak");
+        System.out.println("largest palindrome: "+ myStringUtil.findLargestPalindrome());
         System.out.println("Largest Palindrome: " + myStringUtil.altFindLargestPalindrome());
     }
 
