@@ -17,25 +17,38 @@ public class MyStringUtil {
         this.str = str;
     }
 
+    /**
+     *
+     * @return
+     */
     public int size() {
         return str.length();
     }
 
 
-    public String regex = "[\\s,!.?;:()\"']+";
+
 
     //Pattern pattern = Pattern.compile(regex);
 
+    /**
+     *
+     * @return
+     */
     public String toUpperCase() {
         String upperCase;
         if (str == null || str.isEmpty() || str.equals(" ")) {
-            upperCase =  "";
-        }else {
+            upperCase = "";
+        } else {
             upperCase = getString(str);
         }
         return upperCase;
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     private String getString(String str) {
         StringBuilder uppercase = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
@@ -48,7 +61,11 @@ public class MyStringUtil {
         return uppercase.toString();
     }
 
-
+    /**
+     *
+     * @param input
+     * @return
+     */
     public String toUpperCase(String input) {
         String upperCase;
         if (input == null || input.trim().isEmpty()) {
@@ -57,7 +74,9 @@ public class MyStringUtil {
         return upperCase;
     }
 
-
+    /**
+     *
+     */
     public void printOneByOne() {
         if (str == null) {
             return;
@@ -68,39 +87,51 @@ public class MyStringUtil {
         }
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String reverse() {
         String reverseBuilder;
         if (str == null || str.isEmpty()) {
-            reverseBuilder =  "";
-        }else {
+            reverseBuilder = "";
+        } else {
             StringBuilder reverseString = new StringBuilder();
             for (int i = str.length() - 1; i >= 0; i--) {
                 char ch = str.charAt(i);
                 reverseString.append(ch);
             }
-            reverseBuilder =  reverseString.toString();
+            reverseBuilder = reverseString.toString();
         }
         return reverseBuilder;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Boolean isPalindrome() {
         boolean flag;
         if (str == null || str.trim().isEmpty()) {
             flag = true;
-        }else {
-            String reverseBuilder = this.reverse();
-            flag = reverseBuilder.equals(str);
-        }return flag;
+        } else {
+            String cleanedStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            String reverseBuilder = new StringBuilder(cleanedStr).reverse().toString();
+            flag = reverseBuilder.equals(cleanedStr);
+        }
+        return flag;
     }
 
-
+    /**
+     *
+     * @param input
+     * @return
+     */
     public String reverse(String input) {
         String reversedInput;
         if (input == null) {
             reversedInput = null;
-        }else {
+        } else {
             StringBuilder reverseString = new StringBuilder();
             for (int i = input.length() - 1; i >= 0; i--) {
                 char ch = input.charAt(i);
@@ -111,21 +142,32 @@ public class MyStringUtil {
         return reversedInput;
     }
 
-
+    /**
+     *
+     * @param input
+     * @return
+     */
     public Boolean isPalindrome(String input) {
+        boolean flag;
         if (str == null || str.trim().isEmpty()) {
-            return true;
+            flag = true;
+        }else {
+            String cleanedStr = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            String reverseBuilder = new StringBuilder(cleanedStr).reverse().toString();
+            flag = reverseBuilder.equals(cleanedStr);
         }
-        String reverseBuilder = reverse(toUpperCase(input));
-        return reverseBuilder.equals(toUpperCase(input));
+        return flag;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public char getMaxChar() {
         char max = 0;
         if (str == null || str.isEmpty()) {
             max = ' ';
-        }else {
+        } else {
 
             String uppercase = str.toUpperCase();
 
@@ -143,7 +185,10 @@ public class MyStringUtil {
         return max;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String reverseEachWord() {
         String reversedWords;
         if (str == null) {
@@ -160,12 +205,17 @@ public class MyStringUtil {
         return reversedWords;
     }
 
-
+    /**
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     public String sub(int start, int end) {
         String substring;
         if (str == null) {
             substring = "string is null";
-        }else if (start < 0 || start >= str.length() || end < 0 || end > str.length() || start >= end) {
+        } else if (start < 0 || start >= str.length() || end < 0 || end > str.length() || start >= end) {
             substring = "invalid indexing";
         } else {
 
@@ -179,13 +229,15 @@ public class MyStringUtil {
         return substring;
     }
 
-
-
+    /**
+     *
+     * @return
+     */
     public int[] countEachWordLength() {
         int[] countArray;
         if (str == null || str.trim().isEmpty()) {
             countArray = new int[]{-1};
-        }else {
+        } else {
             String regex = "[\\s,!.?;:()\"']+";
             String[] words = str.trim().split(regex);
             countArray = new int[words.length];
@@ -196,23 +248,34 @@ public class MyStringUtil {
         return countArray;
     }
 
-
+    /**
+     *
+     * @param prefix
+     * @return
+     */
     public String prefix(String prefix) {
         return prefix + this.str;
     }
 
-
+    /**
+     *
+     * @param suffix
+     * @return
+     */
     public String suffix(String suffix) {
         return this.str + suffix;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String reverseCase() {
         String result;
         StringBuilder swapCase = new StringBuilder();
         if (str == null) {
             result = null;
-        }else {
+        } else {
 
             for (int i = 0; i < str.length(); i++) {
                 char ch = str.charAt(i);
@@ -229,12 +292,15 @@ public class MyStringUtil {
         return result;
     }
 
-
-    public String findLargestPalindrome(){
+    /**
+     *
+     * @return
+     */
+    public String findLargestPalindrome() {
         String LargestPalindrome;
-        if (str == null || str.trim().isEmpty()){
+        if (str == null || str.trim().isEmpty()) {
             LargestPalindrome = "";
-        }else {
+        } else {
             String[] stringList = this.str.trim().split("\\s+");
             ArrayList<String> wordList = new ArrayList<>();
             for (String string : stringList) {
@@ -255,11 +321,15 @@ public class MyStringUtil {
         return LargestPalindrome;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String altFindLargestPalindrome() {
         String palindrome;
         if (str == null || str.trim().isEmpty()) {
-            palindrome =  "";
-        }else {
+            palindrome = "";
+        } else {
             String regex = "[\\s,!.?;:()\"']+";
             String[] stringArray = str.trim().split(regex);
             String largestPalindrome = " ";
