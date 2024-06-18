@@ -56,7 +56,7 @@ class MyStringUtilTest {
         MyStringUtil assignment = new MyStringUtil("NotApalindrome");
         assertFalse(assignment.isPalindrome());
         assignment.setStr("malayalam");
-        assertTrue(assignment.isPalindrome());
+        assertTrue(assignment.isPalindrome1());
         assignment.setStr(" ");
         assertTrue(assignment.isPalindrome());
         assignment.setStr("");

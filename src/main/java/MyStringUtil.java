@@ -1,15 +1,15 @@
 import java.util.ArrayList;
-import java.util.regex.*;
+
 
 
 public class MyStringUtil {
     String str;
+
     public MyStringUtil(String str) {
         this.str = str;
     }
 
     /**
-     *
      * @return
      */
     public String getStr() {
@@ -17,7 +17,6 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @param str
      */
     public void setStr(String str) {
@@ -25,12 +24,14 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @return
      */
-    public int size(){
+    public int size() {
         return str.length();
     }
+
+
+
 
     /**
      *
@@ -40,44 +41,38 @@ public class MyStringUtil {
     //Pattern pattern = Pattern.compile(regex);
 
     /**
-     *
      * @return
      */
-    public String toUpperCase(){
-        if (str == null){
+    public String toUpperCase() {
+        if (str == null) {
             return null;
-        }else if ( str.isEmpty() || str.equals(" ")){
+        } else if (str.isEmpty() || str.equals(" ")) {
             return " ";
         }
-        StringBuilder uppercase = new StringBuilder();
-        for (int i = 0; i< str.length();i++){
-             char ch = str.charAt(i);
-            if ( ch >= 'a' && ch <= 'z'){
-                ch = (char) (ch -32);
-            }
-            uppercase.append(ch);
-        }
-        return uppercase.toString();
+        return getString(str);
     }
 
     /**
-     *
      * @param s
      * @return
      */
 
-    public String toUpperCase(String s){
-        if (s == null){
+    public String toUpperCase(String s) {
+        if (s == null) {
             return null;
         }
-        if (s.isEmpty()){
+        if (s.isEmpty()) {
             return null;
         }
+        return getString(s);
+    }
+
+    private String getString(String s) {
         StringBuilder uppercase = new StringBuilder();
-        for (int i = 0; i< s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if ( ch >= 'a' && ch <= 'z'){
-                ch = (char) (ch -32);
+            if (ch >= 'a' && ch <= 'z') {
+                ch = (char) (ch - 32);
             }
             uppercase.append(ch);
         }
@@ -87,28 +82,27 @@ public class MyStringUtil {
     /**
      *
      */
-    public void printOneByOne(){
-        if (str == null){
+    public void printOneByOne() {
+        if (str == null) {
             return;
         }
-        for (int i = 0; i< str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             System.out.println(ch);
         }
     }
 
     /**
-     *
      * @return
      */
-    public String reverse(){
-        if (str == null){
+    public String reverse() {
+        if (str == null) {
             return null;
-        } else if (str.isEmpty()){
+        } else if (str.isEmpty()) {
             return "";
         }
         StringBuilder reverseString = new StringBuilder();
-        for (int i = str.length() -1; i>=0;i--){
+        for (int i = str.length() - 1; i >= 0; i--) {
             char ch = str.charAt(i);
             reverseString.append(ch);
         }
@@ -116,29 +110,54 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @return
      */
-    public Boolean isPalindrome(){
-        if (str == null){
+    public Boolean isPalindrome() {
+        if (str == null) {
             return null;
         }
+
         String reversedString = this.reverse();
         return reversedString.equals(str);
     }
 
+    public Boolean isPalindrome1(){
+        if (str == null || str.trim().isEmpty()){
+            return true;
+        }
+        int l,r;
+
+        l = 0;
+        r = str.length()-1;
+        while ( l <= r){
+            char currentFirst = str.charAt(l);
+            char currentLast = str.charAt(r);
+            if (!Character.isLetterOrDigit(currentFirst)){
+                l++;
+            } else if (!Character.isLetterOrDigit(currentLast)) {
+                r--;
+            }else{
+                if (Character.toLowerCase(currentFirst) != Character.toLowerCase(currentLast)){
+                    return false;
+                }
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+
     /**
-     *
      * @param s
      * @return
      */
 
-    public String reverse(String s){
-        if (s == null){
+    public String reverse(String s) {
+        if (s == null) {
             return null;
         }
         StringBuilder reverseString = new StringBuilder();
-        for (int i = s.length() -1; i>=0;i--){
+        for (int i = s.length() - 1; i >= 0; i--) {
             char ch = s.charAt(i);
             reverseString.append(ch);
         }
@@ -146,25 +165,25 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @param s
      * @return
      */
 
-    public Boolean isPalindrome(String s){
-        if (s == null){
+    public Boolean isPalindrome(String s) {
+        if (s == null) {
             return true;
         }
+        String regex = "[\\s,!.?;:()\"']+";
+
         String reversedString = reverse(toUpperCase(s));
         return reversedString.equals(toUpperCase(s));
     }
 
     /**
-     *
      * @return
      */
 
-    public char getMaxChar(){
+    public char getMaxChar() {
         if (str == null || str.isEmpty()) {
             return ' ';
         }
@@ -184,13 +203,12 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @return
      */
 
 
-    public String reverseEachWord(){
-        if (str == null){
+    public String reverseEachWord() {
+        if (str == null) {
             return null;
         }
 
@@ -203,20 +221,19 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @param start
      * @param end
      * @return
      */
 
-    public String sub(int start, int end){
-        if (str == null){
+    public String sub(int start, int end) {
+        if (str == null) {
             return "string is null";
-        } else if (start >= this.size() || start < 0 || end < 0 || end < start|| end >= str.length() ){
+        } else if (start >= str.length() || start < 0 || end < 0 || end < start || end >= str.length()) {
             return "invalid indexing";
         }
         StringBuilder substring = new StringBuilder();
-        for (int i = start; i < end; i++){
+        for (int i = start; i < end; i++) {
             char ch = str.charAt(i);
             substring.append(ch);
         }
@@ -224,57 +241,53 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @return
      */
-    public int[] countEachWordLength(){
-        if (str == null|| str.trim().isEmpty()){
-            return new int[] {-1};
+    public int[] countEachWordLength() {
+        if (str == null || str.trim().isEmpty()) {
+            return new int[]{-1};
         }
         String regex = "[\\s,!.?;:()\"']+";
         String[] s = str.trim().split(regex);
         int[] wordLengths = new int[s.length];
-        for (int i = 0; i < wordLengths.length;i++){
+        for (int i = 0; i < wordLengths.length; i++) {
             wordLengths[i] = s[i].length();
         }
         return wordLengths;
     }
 
     /**
-     *
      * @param prefix
      * @return
      */
 
-    public String prefix(String prefix){
+    public String prefix(String prefix) {
         return prefix + this.str;
     }
 
     /**
-     *
      * @param suffix
      * @return
      */
-    public String suffix(String suffix){
+    public String suffix(String suffix) {
         return this.str + suffix;
     }
 
     /**
-     *
      * @return
      */
-    public String reverseCase(){
+    public String reverseCase() {
         StringBuilder swapCase = new StringBuilder();
-        if (str == null){
+        if (str == null) {
             return null;
         }
 
-        for (int i = 0; i< str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if ( ch >= 'a' && ch <= 'z'){
-                ch = (char) (ch -32);
-            }else if ( ch >= 'A' && ch <= 'Z'){
-                ch = (char) (ch +32);
+            if (ch >= 'a' && ch <= 'z') {
+                ch = (char) (ch - 32);
+            } else if (ch >= 'A' && ch <= 'Z') {
+                ch = (char) (ch + 32);
             }
 
             swapCase.append(ch);
@@ -283,11 +296,10 @@ public class MyStringUtil {
     }
 
     /**
-     *
      * @return
      */
-    public String findLargestPalindrome(){
-        if (str == null || str.trim().isEmpty()){
+    public String findLargestPalindrome() {
+        if (str == null || str.trim().isEmpty()) {
             return "";
         }
         String[] stringList = this.str.trim().split("\\s+");
@@ -298,9 +310,9 @@ public class MyStringUtil {
             }
         }
         int max = 0;
-        String palindrome = " " ;
-        for ( String s : wordList){
-            if (s.length() > max){
+        String palindrome = " ";
+        for (String s : wordList) {
+            if (s.length() > max) {
                 max = s.length();
                 palindrome = s;
             }
@@ -308,17 +320,17 @@ public class MyStringUtil {
         return palindrome;
     }
 
-    public String altFindLargestPalindrome(){
-        if (str == null|| str.trim().isEmpty()){
+    public String altFindLargestPalindrome() {
+        if (str == null || str.trim().isEmpty()) {
             return "";
         }
         str = str.trim();
         String largestPalindrome = " ";
         int maxlength = 0;
-        for (int i = 0; i < str.length(); i++){
-            for (int j = i+1; j<= str.length(); j++){
-                String subString = str.substring(i,j);
-                if (isPalindrome(subString) && subString.length() >= maxlength){
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i + 1; j <= str.length(); j++) {
+                String subString = str.substring(i, j);
+                if (isPalindrome(subString) && subString.length() >= maxlength) {
                     largestPalindrome = subString;
                     maxlength = subString.length();
                 }
@@ -326,8 +338,8 @@ public class MyStringUtil {
         }
         return largestPalindrome;
     }
+
     /**
-     *
      * @param args
      */
     public static void main(String[] args) {
@@ -340,6 +352,7 @@ public class MyStringUtil {
         System.out.println("Updated String: " + myStringUtil.getStr());
 
         // Testing the size method
+
         System.out.println("Size of String: " + myStringUtil.size());
 
         // Testing toUpperCase method
@@ -385,7 +398,7 @@ public class MyStringUtil {
         int[] lengths = myStringUtil.countEachWordLength();
         System.out.print("Word Lengths: {");
         for (int length : lengths) {
-            System.out.print(length + " ," );
+            System.out.print(length + " ,");
         }
         System.out.println();
 
@@ -401,7 +414,7 @@ public class MyStringUtil {
 
         // Testing findLargestPalindrome method
         myStringUtil.setStr("madam racecar apple malayalam level kayak");
-        System.out.println("largest palindrome: "+ myStringUtil.findLargestPalindrome());
+        System.out.println("largest palindrome: " + myStringUtil.findLargestPalindrome());
         System.out.println("Largest Palindrome: " + myStringUtil.altFindLargestPalindrome());
     }
 
