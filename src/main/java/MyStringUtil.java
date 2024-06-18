@@ -329,7 +329,7 @@ public class MyStringUtil {
         System.out.println("Substring (10, 100): " + myStringUtil.sub(10, 100)); // Test out-of-bounds
 
         // Testing countEachWordLength method
-        myStringUtil.setStr("The platypus danced under the disco ball, oblivious to the peanut butter tornado approaching.");
+        myStringUtil.setStr("Why do flamingos stand on one leg? It's a mystery of nature.");
 
         int[] lengths = myStringUtil.countEachWordLength();
         System.out.print("Word Lengths: {");

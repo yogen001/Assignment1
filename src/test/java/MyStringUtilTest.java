@@ -96,6 +96,8 @@ class MyStringUtilTest {
         assertEquals("ehT supytalp decnad rednu eht ocsid ,llab suoivilbo ot eht tunaep rettub odanrot .gnihcaorppa", testObj.reverseEachWord());
         testObj.setStr(null);
         assertNull(testObj.reverseEachWord());
+        testObj.setStr("I'm so old, I remember when emojis were called 'hieroglyphics'.");
+        assertEquals("m'I os ,dlo I rebmemer nehw sijome erew dellac .'scihpylgoreih'", testObj.reverseEachWord());
     }
 
     @Test
@@ -146,6 +148,8 @@ class MyStringUtilTest {
         assertArrayEquals(new int[] {3 ,8 ,6 ,5 ,3 ,5 ,4 ,9 ,2 ,3 ,6 ,6 ,7 ,11 }, testObj.countEachWordLength());
         testObj.setStr(null);
         assertArrayEquals(new int[] {-1},testObj.countEachWordLength());
+        testObj.setStr("Why do flamingos stand on one leg? It's a mystery of nature.");
+        assertArrayEquals(new int[] {3 ,2 ,9 ,5 ,2 ,3 ,3 ,2 ,1 ,1 ,7 ,2 ,6 },testObj.countEachWordLength());
 
     }
 
