@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class MyStringUtil {
     String str;
 
@@ -292,39 +290,27 @@ public class MyStringUtil {
         return result;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String findLargestPalindrome() {
-        String LargestPalindrome;
-        if (str == null || str.trim().isEmpty()) {
-            LargestPalindrome = "";
-        } else {
-            String[] stringList = this.str.trim().split("\\s+");
-            ArrayList<String> wordList = new ArrayList<>();
-            for (String string : stringList) {
-                if (isPalindrome(string)) {
-                    wordList.add(string);
+    public String findLargestPalindrome(){
+        String largestPalindrome = " ";
+        if (str == null || str.trim().isEmpty()){
+            largestPalindrome = "";
+        }else{
+            for (int i = 0; i < str.length(); i++) {
+                for (int j = i; j < str.length(); j++) {
+                    String testSub= str.substring(i, j+1);
+                    if (isPalindrome(testSub) && (testSub.length() > largestPalindrome.length())) {
+                        largestPalindrome = testSub;
+                    }
+                    }
                 }
             }
-            int max = 0;
-            String palindrome = " ";
-            for (String s : wordList) {
-                if (s.length() > max) {
-                    max = s.length();
-                    palindrome = s;
-                }
-            }
-            LargestPalindrome = palindrome;
-        }
-        return LargestPalindrome;
+        return largestPalindrome.trim();
     }
-
     /**
      *
      * @return
      */
+
     public String altFindLargestPalindrome() {
         String palindrome;
         if (str == null || str.trim().isEmpty()) {

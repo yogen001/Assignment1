@@ -258,15 +258,11 @@ class MyStringUtilTest {
         assertEquals("this sentence is going to be in lowercase", testObj.reverseCase());
         testObj.setStr(null);
         assertEquals(null, testObj.reverseCase());
-        testObj.setStr(" Fin learnt malyalam while working part-time as a saippuakivikauppias");
-        assertEquals("saippuakivikauppias", testObj.findLargestPalindrome());
-        testObj.setStr("the pentagon has misplaced 7449447 dollars ");
-        assertEquals("7449447", testObj.findLargestPalindrome());
 
     }
 
     @Test
-    void findLargestPalindrome() {
+    void findLargestpalindrometest() {
         //Madam Anna saw Bob and Otto race a civic kayak
         MyStringUtil testObj = new MyStringUtil("Madam Anna saw Bob and Otto race a civic kayak while speaking Malayalam");
         assertEquals("Malayalam", testObj.altFindLargestPalindrome());
@@ -277,11 +273,22 @@ class MyStringUtilTest {
         testObj.setStr(null);
         assertEquals("", testObj.findLargestPalindrome());
         testObj.setStr("Evil is a name of a foeman, as I live.");
-        assertEquals("a", testObj.findLargestPalindrome());
+        assertEquals("Evil is a name of a foeman, as I live.", testObj.findLargestPalindrome());
         testObj.setStr("EvilisanameofafoemanasIlive.");
         assertEquals("EvilisanameofafoemanasIlive.", testObj.findLargestPalindrome());
         testObj.setStr("Mom and anna set out in their Honda civic to get some saippuakivikauppias");
         assertEquals("saippuakivikauppias",testObj.findLargestPalindrome());
+        testObj.setStr("So i said Evade me, Dave!");
+        assertEquals("Evade me, Dave!",testObj.findLargestPalindrome());
+        testObj.setStr("And then he mockingly yelled out 'Yo, Banana Boy!'");
+        assertEquals("'Yo, Banana Boy!'",testObj.findLargestPalindrome());
+        testObj.setStr(" Fin learnt malyalam while working part-time as a saippuakivikauppias");
+        assertEquals("saippuakivikauppias", testObj.findLargestPalindrome());
+        testObj.setStr("the pentagon has misplaced 7449447 dollars ");
+        assertEquals("d 7449447 d", testObj.findLargestPalindrome());
+
+
+
 
     }
 }
