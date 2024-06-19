@@ -215,7 +215,7 @@ public class MyStringUtil {
         String substring;
         if (str == null) {
             substring = "string is null";
-        } else if (start < 0 || start >= str.length() || end < 0 || end > str.length() || start >= end) {
+        } else if (start < 0 || start >= str.length() || end < 0 || end > str.length() || start > end) {
             substring = "invalid indexing";
         } else {
 
@@ -322,7 +322,7 @@ public class MyStringUtil {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public String altFindLargestPalindrome() {

@@ -39,6 +39,7 @@ class MyStringUtilTest {
         assignment1.setStr("!@#123abcXYZ");
         assertEquals("!@#123ABCXYZ", assignment1.toUpperCase());
         assertEquals("WHAT'S 17 MORE YEARS?", assignment1.toUpperCase("What's 17 more years?"));
+        assertEquals("Y0U 5H0LD N0T B3 4BL3 T0 R34D TH!5",assignment1.toUpperCase("y0u 5h0ld n0t b3 4bl3 t0 r34d th!5"));
     }
 
     @Test
@@ -54,6 +55,7 @@ class MyStringUtilTest {
         assertEquals("ZYXcba321#@!", assignment.reverse("!@#123abcXYZ"));
         assignment.setStr("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet posuere lacus.");
         assertEquals(".sucal ereusop teuqila ecsuF .tile gnicsipida rutetcesnoc ,tema tis rolod muspi meroL", assignment.reverse());
+
     }
 
     @Test
@@ -72,6 +74,39 @@ class MyStringUtilTest {
         assertTrue(assignment.isPalindrome());
         assertTrue(assignment.isPalindrome("Red roses run no risk, sir, on Nurse’s order."));
         assertFalse(assignment.isPalindrome("He lived as a devil"));
+        assignment.setStr("Нажал кабан на баклажан");
+        assertTrue(assignment.isPalindrome());
+        assignment.setStr("""
+                Dammit I’m mad.
+                Evil is a deed as I live.
+                God, am I reviled? I rise, my bed on a sun, I melt.
+                To be not one man emanating is sad. I piss.
+                Alas, it is so late. Who stops to help?
+                Man, it is hot. I’m in it. I tell.
+                I am not a devil. I level “Mad Dog”.
+                Ah, say burning is, as a deified gulp,
+                In my halo of a mired rum tin.
+                I erase many men. Oh, to be man, a sin.
+                Is evil in a clam? In a trap?
+                No. It is open. On it I was stuck.
+                Rats peed on hope. Elsewhere dips a web.
+                Be still if I fill its ebb.
+                Ew, a spider… eh?
+                We sleep. Oh no!
+                Deep, stark cuts saw it in one position.
+                Part animal, can I live? Sin is a name.
+                Both, one… my names are in it.
+                Murder? I’m a fool.
+                A hymn I plug, deified as a sign in ruby ash.
+                A Goddam level I lived at.
+                On mail let it in. I’m it.
+                Oh, sit in ample hot spots. Oh wet!
+                A loss it is alas (sip). I’d assign it a name.
+                Name not one bottle minus an ode by me:
+                “Sir, I deliver. I’m a dog”
+                Evil is a deed as I live.
+                Dammit I’m mad.""");
+        assertTrue(assignment.isPalindrome());
 
     }
 
@@ -136,10 +171,10 @@ class MyStringUtilTest {
         testObj.setStr("I once saw a conspiracy theorist argue with a lamppost. The lamppost won.");
         assertEquals("invalid indexing", testObj.sub(0, 790809));
         assertEquals("invalid indexing", testObj.sub(-1, -1));
-        assertEquals("invalid indexing", testObj.sub(-12, 88));
-        assertEquals("invalid indexing", testObj.sub(-13, 7));
+        assertEquals("invalid indexing", testObj.sub(-15, 188));
+        assertEquals("", testObj.sub(7, 7));
         assertEquals("invalid indexing", testObj.sub(1, -1));
-        assertEquals("invalid indexing", testObj.sub(10, 7));
+        assertEquals(" a cons", testObj.sub(10, 17));
         assertEquals("invalid indexing", testObj.sub(110, 7));
         assertEquals("I onc", testObj.sub(0, 5));
         assertEquals("nspiracy t", testObj.sub(15, 25));
@@ -178,14 +213,10 @@ class MyStringUtilTest {
         assertEquals(" " + null, testObj.prefix(" "));
         testObj.setStr("");
         assertEquals("", testObj.prefix(""));
-
         testObj.setStr("123");
         assertEquals("abc123", testObj.prefix("abc"));
-
         testObj.setStr(" ");
-
         assertEquals("a ", testObj.prefix("a"));
-
         testObj.setStr("!@#$");
         assertEquals("XYZ!@#$", testObj.prefix("XYZ"));
 
@@ -203,14 +234,10 @@ class MyStringUtilTest {
         assertEquals(null, testObj.reverseCase());
         testObj.setStr("");
         assertEquals("", testObj.suffix(""));
-
         testObj.setStr("123");
         assertEquals("123abc", testObj.suffix("abc"));
-
         testObj.setStr(" ");
-
         assertEquals(" a", testObj.suffix("a"));
-
         testObj.setStr("!@#$");
         assertEquals("!@#$XYZ", testObj.suffix("XYZ"));
     }
@@ -253,6 +280,8 @@ class MyStringUtilTest {
         assertEquals("a", testObj.findLargestPalindrome());
         testObj.setStr("EvilisanameofafoemanasIlive.");
         assertEquals("EvilisanameofafoemanasIlive.", testObj.findLargestPalindrome());
+        testObj.setStr("Mom and anna set out in their Honda civic to get some saippuakivikauppias");
+        assertEquals("saippuakivikauppias",testObj.findLargestPalindrome());
 
     }
 }
